@@ -1,0 +1,20 @@
+{
+    "name": "profissa/yii2-state-machine",
+    "description": "Yii2 State Machine",
+    "type": "yii2-extension",
+    "authors": [
+        {
+            "name": "Andre Metzen",
+            "email": "andressantos@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Profissa\\StateMachine\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "yiisoft/yii2": "*"
+    }
+}
