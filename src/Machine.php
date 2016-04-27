@@ -55,10 +55,10 @@ class Machine extends Behavior
         if($this->owner->scenario == "search")
             return true;
 
-        if (!isset($this->initial))
+        if (empty($this->initial))
             throw new Exception("It's required to set an initial state");
 
-        if (!isset($this->namespace) || empty($this->namespace))
+        if (empty($this->namespace))
             $this->namespace = strtolower(get_class($this->owner)).'\\status';
 
 
@@ -71,7 +71,6 @@ class Machine extends Behavior
             else
                 $this->transitions[$k] = $t;
         }
-
 
         $this->getStatus();
     }
