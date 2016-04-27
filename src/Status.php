@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components\state;
+namespace Profissa\StateMachine;
 
 use yii\base\Behavior;
 
