@@ -2,13 +2,24 @@
 
 namespace profissa\state;
 
+use yii\base\Arrayable;
 use yii\base\Behavior;
 
-class Status extends Behavior {
+class Status extends Behavior implements Arrayable{
 
     public $stateBehavior;
-    public $label = "Não definido";
-    public $id = "undefined";
+    public $label = "";
+    public $id = "";
+
+    public function __construct()
+    {
+        if (empty($this->id))
+            $this->id = strtolower((new \ReflectionClass($this))->getShortName());
+        if (empty($this->label))
+            $this->id = (new \ReflectionClass($this))->getShortName();
+        parent::__construct();
+
+    }
 
     public function getAvailableStatus()
     {
@@ -54,4 +65,23 @@ class Status extends Behavior {
     {
         return $this->id;
     }
+
+    public function fields()
+    {
+        return ['id', 'label'];
+
+    }
+
+    public function extraFields()
+    {
+        return [];
+
+    }
+
+    public function toArray(array $fields = [], array $expand = [], $recursive = true)
+    {
+        return ['id' => $this->id, 'label' => $this->label];
+
+    }
+
 }
