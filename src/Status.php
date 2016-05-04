@@ -2,7 +2,6 @@
 
 namespace profissa\state;
 
-use yii\base\Arrayable;
 use yii\base\Behavior;
 
 class Status extends Behavior implements Arrayable{
@@ -64,24 +63,6 @@ class Status extends Behavior implements Arrayable{
     public function __toString()
     {
         return $this->id;
-    }
-
-    public function fields()
-    {
-        return ['id', 'label'];
-
-    }
-
-    public function extraFields()
-    {
-        return [];
-
-    }
-
-    public function toArray(array $fields = [], array $expand = [], $recursive = true)
-    {
-        return ['id' => $this->id, 'label' => $this->label];
-
     }
 
 }
