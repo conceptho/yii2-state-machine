@@ -3,14 +3,15 @@
 namespace profissa\state;
 
 use yii\base\Behavior;
-use yii\base\Exception;
 use yii\db\ActiveRecord;
+use yii\web\BadRequestHttpException;
 
 class Machine extends Behavior
 {
 
     public $attr = 'status';
     public $initial = '';
+    public $model_label = '';
     public $namespace = '';
     public $transitions = array();
     private $options = array();
@@ -57,6 +58,9 @@ class Machine extends Behavior
 
         if (empty($this->initial))
             throw new Exception("It's required to set an initial state");
+
+        if (empty($this->model_label))
+            throw new Exception("It's required to set a model label");
 
         if (empty($this->namespace))
             $this->namespace = strtolower(get_class($this->owner)).'\\status';
@@ -154,7 +158,7 @@ class Machine extends Behavior
 
 
         if (!$this->canChangeTo($id) && $force === false)
-            throw new Exception('Cant change '.get_class($this->owner).'('.$this->owner->primaryKey.') from '.$this->getStatusId().' to status '.$id);
+            throw new BadRequestHttpException;('Não é possível alterar '. $this->model_label .' do estado '.$this->getStatus()->label.' para o estado '.$this->getStatusObject($id)->label);
 
         $event = new Event(['data' => $data]);
         if($this->owner->{$this->attr}->onExit($id, $event))
