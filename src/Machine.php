@@ -5,6 +5,7 @@ namespace profissa\state;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\web\BadRequestHttpException;
+use yii\base\Exception;
 
 class Machine extends Behavior
 {
