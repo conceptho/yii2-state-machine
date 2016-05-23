@@ -4,7 +4,8 @@ namespace profissa\state;
 
 use yii\base\Behavior;
 
-class Status extends Behavior implements Arrayable{
+class Status extends Behavior
+{
 
     public $stateBehavior;
     public $label = "";
