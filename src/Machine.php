@@ -159,7 +159,7 @@ class Machine extends Behavior
 
 
         if (!$this->canChangeTo($id) && $force === false)
-            throw new BadRequestHttpException;('Não é possível alterar '. $this->model_label .' do estado '.$this->getStatus()->label.' para o estado '.$this->getStatusObject($id)->label);
+            throw new BadRequestHttpException('Não é possível alterar '. $this->model_label .' do estado '.$this->getStatus()->label.' para o estado '.$this->getStatusObject($id)->label);
 
         $event = new Event(['data' => $data]);
         if($this->owner->{$this->attr}->onExit($id, $event))
