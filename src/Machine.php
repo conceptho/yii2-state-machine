@@ -157,6 +157,10 @@ class Machine extends Behavior
     {
         $oldStatusId = $this->getStatusId();
 
+        //Changing for the same status
+        if ($oldStatusId === $id)
+            return true;
+
 
         if (!$this->canChangeTo($id) && $force === false)
             throw new BadRequestHttpException('Não é possível alterar '. $this->model_label .' do estado '.$this->getStatus()->label.' para o estado '.$this->getStatusObject($id)->label);
