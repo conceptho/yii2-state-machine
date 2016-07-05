@@ -8,6 +8,6 @@ class Event extends YiiEvent
 {
     public function getData()
     {
-        return $this->params;
+        return $this->data;
     }
 }
