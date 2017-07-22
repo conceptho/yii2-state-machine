@@ -1,6 +1,6 @@
 <?php
 
-namespace profissa\state;
+namespace conceptho\state;
 
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
