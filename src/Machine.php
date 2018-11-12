@@ -128,7 +128,14 @@ class Machine extends Behavior
 
     public function allowedStatusChanges()
     {
-        return $this->transitions[$this->getStatusId()];
+        $allowedStatus = $this->transitions[$this->getStatusId()];
+        $allowedStatus = array_filter(
+            $allowedStatus,
+            function ($status){
+                return $this->owner->{$this->attr}->canChangeTo($status);
+            }
+        );
+        return $allowedStatus;
     }
 
     public function getAvailableStatus()
