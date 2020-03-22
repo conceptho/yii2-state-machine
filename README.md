@@ -93,9 +93,9 @@ namespace app\models\status\user;
 use conceptho\state\Status;
 
 class Inactive extends Status {
-    public const ID = 'active';
-    public $label = 'Active';
-    public $labelColor = 'primary';
+    public const ID = 'inactive';
+    public $label = 'Inactive';
+    public $labelColor = 'danger';
 
     public function onExit($id, $event)
     {
@@ -119,9 +119,9 @@ namespace app\models\status\user;
 use conceptho\state\status;
 
 class Disabled extends Status {
-    public const ID = 'active';
-    public $label = 'Active';
-    public $labelColor = 'primary';
+    public const ID = 'disabled';
+    public $label = 'Disabled';
+    public $labelColor = 'muted';
 
     public function onExit($id, $event)
     {
